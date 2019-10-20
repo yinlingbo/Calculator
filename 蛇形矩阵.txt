@@ -1,0 +1,61 @@
+#include<vector>
+#include<iostream>
+using namespace std;
+int a[1000][1000];
+
+int n;
+
+int main()
+{
+	printf("请输入矩阵的大小(边长小于200) "); 
+    scanf("%d",&n);
+
+    int num=1;S
+    int floor=0;
+    for(int i=1;i<=(2*n-1);i++)
+    {
+        
+        if(i<=n) floor++;
+        else floor--;
+
+        vector<int> c;
+        for(int k=0;k<floor;k++)
+        {
+            c.push_back(num);
+            num++;
+        }
+        if(i%2==0)
+        {
+            int ci=0;
+            for(int index=0;index<i;index++)
+            {
+                if(index>=n || i-1-index>=n) continue;
+                a[index][i-1-index]=c[ci];
+                ci++;  
+            }
+        }
+        else
+        {
+            int ci=floor-1;
+            for(int index=0;index<i;index++)
+            {
+                if(index>=n || i-1-index>=n) continue;
+                a[index][i-1-index]=c[ci];
+                ci--;  
+            }
+        }
+        
+
+    }
+
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            printf("%4d",a[i][j]);
+        }
+        cout<<endl;
+    }
+    return 0;
+}
